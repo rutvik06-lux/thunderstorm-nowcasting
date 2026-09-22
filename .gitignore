@@ -1,3 +1,5 @@
 
 # Incomplete download files
 *.part
+
+.venv/
