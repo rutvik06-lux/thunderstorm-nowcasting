@@ -1,0 +1,517 @@
+2026-09-22 10:49:41,314 - ERROR - Request error downloading 3SIMG_14MAR2026_2330_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(228230432 bytes read, 197024928 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(228230432 bytes read, 197024928 more expected)', IncompleteRead(228230432 bytes read, 197024928 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(228230432 bytes read, 197024928 more expected)', IncompleteRead(228230432 bytes read, 197024928 more expected))
+2026-09-22 10:51:38,872 - ERROR - Request error downloading 3SIMG_14MAR2026_2330_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(116788302 bytes read, 80926066 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(116788302 bytes read, 80926066 more expected)', IncompleteRead(116788302 bytes read, 80926066 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(116788302 bytes read, 80926066 more expected)', IncompleteRead(116788302 bytes read, 80926066 more expected))
+2026-09-22 10:52:08,559 - ERROR - Request error downloading 3SIMG_14MAR2026_2330_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(13424180 bytes read, 67898252 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(13424180 bytes read, 67898252 more expected)', IncompleteRead(13424180 bytes read, 67898252 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(13424180 bytes read, 67898252 more expected)', IncompleteRead(13424180 bytes read, 67898252 more expected))
+2026-09-22 10:52:45,349 - WARNING - Connection interrupted for 3SIMG_14MAR2026_2330_L1B_STD_V01R00.h5: HTTPSConnectionPool(host='mosdac.gov.in', port=443): Read timed out. (read timeout=30)
+2026-09-22 11:02:25,325 - ERROR - Request error downloading 3SIMG_14MAR2026_2230_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(310719273 bytes read, 107442457 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(310719273 bytes read, 107442457 more expected)', IncompleteRead(310719273 bytes read, 107442457 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(310719273 bytes read, 107442457 more expected)', IncompleteRead(310719273 bytes read, 107442457 more expected))
+2026-09-22 11:03:02,362 - WARNING - Connection interrupted for 3SIMG_14MAR2026_2230_L1B_STD_V01R00.h5: HTTPSConnectionPool(host='mosdac.gov.in', port=443): Read timed out. (read timeout=30)
+2026-09-22 11:10:59,595 - ERROR - Request error downloading 3SIMG_14MAR2026_2130_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(151071560 bytes read, 259307435 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(151071560 bytes read, 259307435 more expected)', IncompleteRead(151071560 bytes read, 259307435 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(151071560 bytes read, 259307435 more expected)', IncompleteRead(151071560 bytes read, 259307435 more expected))
+2026-09-22 11:12:54,925 - ERROR - Request error downloading 3SIMG_14MAR2026_2130_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(158012190 bytes read, 101371861 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(158012190 bytes read, 101371861 more expected)', IncompleteRead(158012190 bytes read, 101371861 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(158012190 bytes read, 101371861 more expected)', IncompleteRead(158012190 bytes read, 101371861 more expected))
+2026-09-22 11:13:49,639 - ERROR - Request error downloading 3SIMG_14MAR2026_2130_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(38795670 bytes read, 63301981 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(38795670 bytes read, 63301981 more expected)', IncompleteRead(38795670 bytes read, 63301981 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(38795670 bytes read, 63301981 more expected)', IncompleteRead(38795670 bytes read, 63301981 more expected))
+2026-09-22 11:14:26,398 - WARNING - Connection interrupted for 3SIMG_14MAR2026_2130_L1B_STD_V01R00.h5: HTTPSConnectionPool(host='mosdac.gov.in', port=443): Read timed out. (read timeout=30)
+2026-09-22 11:14:32,567 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2130_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: https://mosdac.gov.in/download_api/download?id=17338872
+2026-09-22 11:14:38,231 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2130_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: https://mosdac.gov.in/download_api/download?id=17338872
+2026-09-22 11:14:43,980 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2130_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: https://mosdac.gov.in/download_api/download?id=17338872
+2026-09-22 11:14:49,720 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2130_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: https://mosdac.gov.in/download_api/download?id=17338872
+2026-09-22 11:14:55,543 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2130_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: https://mosdac.gov.in/download_api/download?id=17338872
+2026-09-22 11:15:01,397 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2130_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: https://mosdac.gov.in/download_api/download?id=17338872
+2026-09-22 11:15:07,279 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2130_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: https://mosdac.gov.in/download_api/download?id=17338872
+2026-09-22 11:15:13,116 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2130_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: https://mosdac.gov.in/download_api/download?id=17338872
+2026-09-22 11:15:19,017 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2130_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: https://mosdac.gov.in/download_api/download?id=17338872
+2026-09-22 11:15:25,328 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2130_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: https://mosdac.gov.in/download_api/download?id=17338872
+2026-09-22 11:16:01,987 - WARNING - Connection interrupted for 3SIMG_14MAR2026_2130_L1B_STD_V01R00.h5: HTTPSConnectionPool(host='mosdac.gov.in', port=443): Read timed out. (read timeout=30)
+2026-09-22 11:16:08,662 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2130_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 503 Server Error: Service Unavailable for url: https://mosdac.gov.in/download_api/download?id=17338872
+2026-09-22 11:16:17,877 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2130_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 503 Server Error: Service Unavailable for url: https://mosdac.gov.in/download_api/download?id=17338872
+2026-09-22 11:16:24,029 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2130_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 503 Server Error: Service Unavailable for url: https://mosdac.gov.in/download_api/download?id=17338872
+2026-09-22 11:16:33,237 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2130_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 503 Server Error: Service Unavailable for url: https://mosdac.gov.in/download_api/download?id=17338872
+2026-09-22 11:16:36,314 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2100_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 503 Server Error: Service Unavailable for url: https://mosdac.gov.in/download_api/download?id=17338620
+2026-09-22 11:17:03,958 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2100_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 503 Server Error: Service Unavailable for url: https://mosdac.gov.in/download_api/download?id=17338620
+2026-09-22 11:17:40,615 - WARNING - Connection interrupted for 3SIMG_14MAR2026_2100_L1B_STD_V01R00.h5: HTTPSConnectionPool(host='mosdac.gov.in', port=443): Read timed out. (read timeout=30)
+2026-09-22 11:17:46,983 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2100_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 503 Server Error: Service Unavailable for url: https://mosdac.gov.in/download_api/download?id=17338620
+2026-09-22 11:17:53,117 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2100_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 503 Server Error: Service Unavailable for url: https://mosdac.gov.in/download_api/download?id=17338620
+2026-09-22 11:17:59,257 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2100_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 503 Server Error: Service Unavailable for url: https://mosdac.gov.in/download_api/download?id=17338620
+2026-09-22 11:18:08,473 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2100_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 503 Server Error: Service Unavailable for url: https://mosdac.gov.in/download_api/download?id=17338620
+2026-09-22 11:18:14,616 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2100_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 503 Server Error: Service Unavailable for url: https://mosdac.gov.in/download_api/download?id=17338620
+2026-09-22 11:18:20,781 - ERROR - HTTP error downloading 3SIMG_14MAR2026_2100_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 671, in download_data
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 503 Server Error: Service Unavailable for url: https://mosdac.gov.in/download_api/download?id=17338620
+2026-09-22 11:18:33,116 - ERROR - Token refresh failed: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 238, in refresh_authentication
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+2026-09-22 11:18:35,162 - ERROR - Token refresh failed: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 238, in refresh_authentication
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+2026-09-22 11:18:36,416 - ERROR - Token refresh failed: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 238, in refresh_authentication
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+2026-09-22 11:18:37,641 - ERROR - Token refresh failed: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 238, in refresh_authentication
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+2026-09-22 11:18:39,141 - ERROR - Token refresh failed: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 238, in refresh_authentication
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+2026-09-22 11:18:40,488 - ERROR - Token refresh failed: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 238, in refresh_authentication
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+2026-09-22 11:18:41,828 - ERROR - Token refresh failed: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 238, in refresh_authentication
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token

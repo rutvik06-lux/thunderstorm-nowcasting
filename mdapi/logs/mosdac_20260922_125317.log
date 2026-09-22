@@ -1,0 +1,1898 @@
+2026-09-22 12:53:53,604 - ERROR - Request error downloading 3SIMG_15MAR2026_2330_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(12782429 bytes read, 411811185 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(12782429 bytes read, 411811185 more expected)', IncompleteRead(12782429 bytes read, 411811185 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(12782429 bytes read, 411811185 more expected)', IncompleteRead(12782429 bytes read, 411811185 more expected))
+2026-09-22 12:54:24,531 - ERROR - Request error downloading 3SIMG_15MAR2026_2330_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1046, in _raw_read
+    data = self._fp_read(amt, read1=read1) if not fp_closed else b""
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1029, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 479, in read
+    s = self.fp.read(amt)
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1134, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 952, in _error_catcher
+    raise ProtocolError(f"Connection broken: {e!r}", e) from e
+urllib3.exceptions.ProtocolError: ("Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)", ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ("Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)", ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+2026-09-22 12:55:01,290 - ERROR - Request error downloading 3SIMG_15MAR2026_2330_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(12643819 bytes read, 398318307 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(12643819 bytes read, 398318307 more expected)', IncompleteRead(12643819 bytes read, 398318307 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(12643819 bytes read, 398318307 more expected)', IncompleteRead(12643819 bytes read, 398318307 more expected))
+2026-09-22 12:55:56,349 - ERROR - Request error downloading 3SIMG_15MAR2026_2330_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(20678372 bytes read, 377700842 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(20678372 bytes read, 377700842 more expected)', IncompleteRead(20678372 bytes read, 377700842 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(20678372 bytes read, 377700842 more expected)', IncompleteRead(20678372 bytes read, 377700842 more expected))
+2026-09-22 12:56:32,071 - ERROR - Request error downloading 3SIMG_15MAR2026_2330_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(19049634 bytes read, 359406636 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(19049634 bytes read, 359406636 more expected)', IncompleteRead(19049634 bytes read, 359406636 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(19049634 bytes read, 359406636 more expected)', IncompleteRead(19049634 bytes read, 359406636 more expected))
+2026-09-22 12:57:27,154 - ERROR - Request error downloading 3SIMG_15MAR2026_2330_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(21721457 bytes read, 337860445 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(21721457 bytes read, 337860445 more expected)', IncompleteRead(21721457 bytes read, 337860445 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(21721457 bytes read, 337860445 more expected)', IncompleteRead(21721457 bytes read, 337860445 more expected))
+2026-09-22 12:57:50,324 - ERROR - Request error downloading 3SIMG_15MAR2026_2330_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1046, in _raw_read
+    data = self._fp_read(amt, read1=read1) if not fp_closed else b""
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1029, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 479, in read
+    s = self.fp.read(amt)
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1134, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 952, in _error_catcher
+    raise ProtocolError(f"Connection broken: {e!r}", e) from e
+urllib3.exceptions.ProtocolError: ("Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)", ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ("Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)", ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+2026-09-22 12:58:36,100 - ERROR - Request error downloading 3SIMG_15MAR2026_2330_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(12125461 bytes read, 313902009 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(12125461 bytes read, 313902009 more expected)', IncompleteRead(12125461 bytes read, 313902009 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(12125461 bytes read, 313902009 more expected)', IncompleteRead(12125461 bytes read, 313902009 more expected))
+2026-09-22 12:59:27,069 - ERROR - Request error downloading 3SIMG_15MAR2026_2330_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(16807502 bytes read, 297685632 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(16807502 bytes read, 297685632 more expected)', IncompleteRead(16807502 bytes read, 297685632 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(16807502 bytes read, 297685632 more expected)', IncompleteRead(16807502 bytes read, 297685632 more expected))
+2026-09-22 13:00:03,855 - ERROR - Request error downloading 3SIMG_15MAR2026_2330_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(12313667 bytes read, 285402251 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(12313667 bytes read, 285402251 more expected)', IncompleteRead(12313667 bytes read, 285402251 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(12313667 bytes read, 285402251 more expected)', IncompleteRead(12313667 bytes read, 285402251 more expected))
+2026-09-22 13:00:44,895 - ERROR - Request error downloading 3SIMG_15MAR2026_2330_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(14454749 bytes read, 271726833 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(14454749 bytes read, 271726833 more expected)', IncompleteRead(14454749 bytes read, 271726833 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(14454749 bytes read, 271726833 more expected)', IncompleteRead(14454749 bytes read, 271726833 more expected))
+2026-09-22 13:01:20,173 - ERROR - Request error downloading 3SIMG_15MAR2026_2330_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1046, in _raw_read
+    data = self._fp_read(amt, read1=read1) if not fp_closed else b""
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1029, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 479, in read
+    s = self.fp.read(amt)
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1134, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 952, in _error_catcher
+    raise ProtocolError(f"Connection broken: {e!r}", e) from e
+urllib3.exceptions.ProtocolError: ("Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)", ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ("Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)", ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+2026-09-22 13:02:24,637 - ERROR - Request error downloading 3SIMG_15MAR2026_2330_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(17057220 bytes read, 249201418 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(17057220 bytes read, 249201418 more expected)', IncompleteRead(17057220 bytes read, 249201418 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(17057220 bytes read, 249201418 more expected)', IncompleteRead(17057220 bytes read, 249201418 more expected))
+2026-09-22 13:03:09,592 - ERROR - Request error downloading 3SIMG_15MAR2026_2330_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(12378313 bytes read, 237103109 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(12378313 bytes read, 237103109 more expected)', IncompleteRead(12378313 bytes read, 237103109 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(12378313 bytes read, 237103109 more expected)', IncompleteRead(12378313 bytes read, 237103109 more expected))
+2026-09-22 13:03:46,384 - WARNING - Connection interrupted for 3SIMG_15MAR2026_2330_L1B_STD_V01R00.h5: HTTPSConnectionPool(host='mosdac.gov.in', port=443): Read timed out. (read timeout=30)
+2026-09-22 13:04:27,288 - ERROR - Request error downloading 3SIMG_15MAR2026_2330_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(12118828 bytes read, 225828258 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(12118828 bytes read, 225828258 more expected)', IncompleteRead(12118828 bytes read, 225828258 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(12118828 bytes read, 225828258 more expected)', IncompleteRead(12118828 bytes read, 225828258 more expected))
+2026-09-22 13:04:47,021 - WARNING - Connection interrupted for 3SIMG_15MAR2026_2330_L1B_STD_V01R00.h5: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+2026-09-22 13:05:45,052 - ERROR - Request error downloading 3SIMG_15MAR2026_2330_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(34642821 bytes read, 191769929 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(34642821 bytes read, 191769929 more expected)', IncompleteRead(34642821 bytes read, 191769929 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(34642821 bytes read, 191769929 more expected)', IncompleteRead(34642821 bytes read, 191769929 more expected))
+2026-09-22 13:06:27,141 - ERROR - Request error downloading 3SIMG_15MAR2026_2300_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(24036713 bytes read, 397247633 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(24036713 bytes read, 397247633 more expected)', IncompleteRead(24036713 bytes read, 397247633 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(24036713 bytes read, 397247633 more expected)', IncompleteRead(24036713 bytes read, 397247633 more expected))
+2026-09-22 13:07:04,506 - ERROR - Request error downloading 3SIMG_15MAR2026_2300_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(14603536 bytes read, 383612138 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(14603536 bytes read, 383612138 more expected)', IncompleteRead(14603536 bytes read, 383612138 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(14603536 bytes read, 383612138 more expected)', IncompleteRead(14603536 bytes read, 383612138 more expected))
+2026-09-22 13:07:54,478 - ERROR - Request error downloading 3SIMG_15MAR2026_2300_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(17746837 bytes read, 366837349 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(17746837 bytes read, 366837349 more expected)', IncompleteRead(17746837 bytes read, 366837349 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(17746837 bytes read, 366837349 more expected)', IncompleteRead(17746837 bytes read, 366837349 more expected))
+2026-09-22 13:08:21,252 - ERROR - Request error downloading 3SIMG_15MAR2026_2300_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1046, in _raw_read
+    data = self._fp_read(amt, read1=read1) if not fp_closed else b""
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1029, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 479, in read
+    s = self.fp.read(amt)
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1134, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 952, in _error_catcher
+    raise ProtocolError(f"Connection broken: {e!r}", e) from e
+urllib3.exceptions.ProtocolError: ("Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)", ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ("Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)", ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+2026-09-22 13:08:59,335 - ERROR - Request error downloading 3SIMG_15MAR2026_2300_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(11677031 bytes read, 356129939 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(11677031 bytes read, 356129939 more expected)', IncompleteRead(11677031 bytes read, 356129939 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(11677031 bytes read, 356129939 more expected)', IncompleteRead(11677031 bytes read, 356129939 more expected))
+2026-09-22 13:09:44,281 - ERROR - Request error downloading 3SIMG_15MAR2026_2300_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(12379030 bytes read, 343893604 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(12379030 bytes read, 343893604 more expected)', IncompleteRead(12379030 bytes read, 343893604 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(12379030 bytes read, 343893604 more expected)', IncompleteRead(12379030 bytes read, 343893604 more expected))
+2026-09-22 13:10:20,677 - ERROR - Request error downloading 3SIMG_15MAR2026_2300_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(13611179 bytes read, 331127119 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(13611179 bytes read, 331127119 more expected)', IncompleteRead(13611179 bytes read, 331127119 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(13611179 bytes read, 331127119 more expected)', IncompleteRead(13611179 bytes read, 331127119 more expected))
+2026-09-22 13:11:01,011 - ERROR - Request error downloading 3SIMG_15MAR2026_2300_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(18206569 bytes read, 313948817 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(18206569 bytes read, 313948817 more expected)', IncompleteRead(18206569 bytes read, 313948817 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(18206569 bytes read, 313948817 more expected)', IncompleteRead(18206569 bytes read, 313948817 more expected))
+2026-09-22 13:11:50,511 - ERROR - Request error downloading 3SIMG_15MAR2026_2300_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1046, in _raw_read
+    data = self._fp_read(amt, read1=read1) if not fp_closed else b""
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1029, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 479, in read
+    s = self.fp.read(amt)
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1134, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 952, in _error_catcher
+    raise ProtocolError(f"Connection broken: {e!r}", e) from e
+urllib3.exceptions.ProtocolError: ("Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)", ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ("Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)", ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+2026-09-22 13:12:30,972 - ERROR - Request error downloading 3SIMG_15MAR2026_2300_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(17722011 bytes read, 282976095 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(17722011 bytes read, 282976095 more expected)', IncompleteRead(17722011 bytes read, 282976095 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(17722011 bytes read, 282976095 more expected)', IncompleteRead(17722011 bytes read, 282976095 more expected))
+2026-09-22 13:13:33,162 - ERROR - Request error downloading 3SIMG_15MAR2026_2300_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(16308217 bytes read, 267612673 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(16308217 bytes read, 267612673 more expected)', IncompleteRead(16308217 bytes read, 267612673 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(16308217 bytes read, 267612673 more expected)', IncompleteRead(16308217 bytes read, 267612673 more expected))
+2026-09-22 13:14:28,957 - ERROR - Request error downloading 3SIMG_15MAR2026_2300_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(14802032 bytes read, 253390218 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(14802032 bytes read, 253390218 more expected)', IncompleteRead(14802032 bytes read, 253390218 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(14802032 bytes read, 253390218 more expected)', IncompleteRead(14802032 bytes read, 253390218 more expected))
+2026-09-22 13:15:24,026 - ERROR - Request error downloading 3SIMG_15MAR2026_2300_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1046, in _raw_read
+    data = self._fp_read(amt, read1=read1) if not fp_closed else b""
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1029, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 479, in read
+    s = self.fp.read(amt)
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1134, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 952, in _error_catcher
+    raise ProtocolError(f"Connection broken: {e!r}", e) from e
+urllib3.exceptions.ProtocolError: ("Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)", ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ("Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)", ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+2026-09-22 13:15:29,057 - WARNING - Connection interrupted for 3SIMG_15MAR2026_2300_L1B_STD_V01R00.h5: HTTPSConnectionPool(host='mosdac.gov.in', port=443): Max retries exceeded with url: /download_api/download?id=17346926 (Caused by NameResolutionError("HTTPSConnection(host='mosdac.gov.in', port=443): Failed to resolve 'mosdac.gov.in' ([Errno 11001] getaddrinfo failed)"))
+2026-09-22 13:16:11,850 - ERROR - Request error downloading 3SIMG_15MAR2026_2300_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(16331255 bytes read, 204675075 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(16331255 bytes read, 204675075 more expected)', IncompleteRead(16331255 bytes read, 204675075 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(16331255 bytes read, 204675075 more expected)', IncompleteRead(16331255 bytes read, 204675075 more expected))
+2026-09-22 13:17:01,413 - ERROR - Request error downloading 3SIMG_15MAR2026_2300_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(22203220 bytes read, 183074470 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(22203220 bytes read, 183074470 more expected)', IncompleteRead(22203220 bytes read, 183074470 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(22203220 bytes read, 183074470 more expected)', IncompleteRead(22203220 bytes read, 183074470 more expected))
+2026-09-22 13:17:40,653 - ERROR - Request error downloading 3SIMG_15MAR2026_2300_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(12656818 bytes read, 170600776 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(12656818 bytes read, 170600776 more expected)', IncompleteRead(12656818 bytes read, 170600776 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(12656818 bytes read, 170600776 more expected)', IncompleteRead(12656818 bytes read, 170600776 more expected))
+2026-09-22 13:18:22,762 - ERROR - Request error downloading 3SIMG_15MAR2026_2300_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(12248381 bytes read, 158426301 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(12248381 bytes read, 158426301 more expected)', IncompleteRead(12248381 bytes read, 158426301 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(12248381 bytes read, 158426301 more expected)', IncompleteRead(12248381 bytes read, 158426301 more expected))
+2026-09-22 13:18:51,035 - ERROR - Request error downloading 3SIMG_15MAR2026_2230_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1046, in _raw_read
+    data = self._fp_read(amt, read1=read1) if not fp_closed else b""
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1029, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 479, in read
+    s = self.fp.read(amt)
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1134, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 952, in _error_catcher
+    raise ProtocolError(f"Connection broken: {e!r}", e) from e
+urllib3.exceptions.ProtocolError: ("Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)", ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ("Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)", ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+2026-09-22 13:19:20,590 - ERROR - Request error downloading 3SIMG_15MAR2026_2230_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(15972614 bytes read, 396763274 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(15972614 bytes read, 396763274 more expected)', IncompleteRead(15972614 bytes read, 396763274 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(15972614 bytes read, 396763274 more expected)', IncompleteRead(15972614 bytes read, 396763274 more expected))
+2026-09-22 13:20:13,643 - ERROR - Request error downloading 3SIMG_15MAR2026_2230_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(18471921 bytes read, 378535327 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(18471921 bytes read, 378535327 more expected)', IncompleteRead(18471921 bytes read, 378535327 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(18471921 bytes read, 378535327 more expected)', IncompleteRead(18471921 bytes read, 378535327 more expected))
+2026-09-22 13:20:45,170 - ERROR - Request error downloading 3SIMG_15MAR2026_2230_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(11976147 bytes read, 367205309 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(11976147 bytes read, 367205309 more expected)', IncompleteRead(11976147 bytes read, 367205309 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(11976147 bytes read, 367205309 more expected)', IncompleteRead(11976147 bytes read, 367205309 more expected))
+2026-09-22 13:22:18,201 - ERROR - Request error downloading 3SIMG_15MAR2026_2230_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1046, in _raw_read
+    data = self._fp_read(amt, read1=read1) if not fp_closed else b""
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1029, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 479, in read
+    s = self.fp.read(amt)
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1134, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 952, in _error_catcher
+    raise ProtocolError(f"Connection broken: {e!r}", e) from e
+urllib3.exceptions.ProtocolError: ("Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)", ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ("Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)", ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+2026-09-22 13:23:24,404 - ERROR - Request error downloading 3SIMG_15MAR2026_2230_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(14861141 bytes read, 324474427 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(14861141 bytes read, 324474427 more expected)', IncompleteRead(14861141 bytes read, 324474427 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(14861141 bytes read, 324474427 more expected)', IncompleteRead(14861141 bytes read, 324474427 more expected))
+2026-09-22 13:24:28,414 - ERROR - Request error downloading 3SIMG_15MAR2026_2230_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(14607880 bytes read, 310047624 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(14607880 bytes read, 310047624 more expected)', IncompleteRead(14607880 bytes read, 310047624 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(14607880 bytes read, 310047624 more expected)', IncompleteRead(14607880 bytes read, 310047624 more expected))
+2026-09-22 13:25:10,935 - ERROR - Request error downloading 3SIMG_15MAR2026_2230_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1067, in _raw_read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+urllib3.exceptions.IncompleteRead: IncompleteRead(13948140 bytes read, 297075876 more expected)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1179, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 949, in _error_catcher
+    raise ProtocolError(arg, e) from e
+urllib3.exceptions.ProtocolError: ('Connection broken: IncompleteRead(13948140 bytes read, 297075876 more expected)', IncompleteRead(13948140 bytes read, 297075876 more expected))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ('Connection broken: IncompleteRead(13948140 bytes read, 297075876 more expected)', IncompleteRead(13948140 bytes read, 297075876 more expected))
+2026-09-22 13:25:51,108 - ERROR - Request error downloading 3SIMG_15MAR2026_2230_L1B_STD_V01R00.h5
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 929, in _error_catcher
+    yield
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1046, in _raw_read
+    data = self._fp_read(amt, read1=read1) if not fp_closed else b""
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1029, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+           ~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 479, in read
+    s = self.fp.read(amt)
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 937, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1291, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1134, in read
+    data = self._raw_read(amt)
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 1045, in _raw_read
+    with self._error_catcher():
+         ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\urllib3\response.py", line 952, in _error_catcher
+    raise ProtocolError(f"Connection broken: {e!r}", e) from e
+urllib3.exceptions.ProtocolError: ("Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)", ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 786, in download_data
+    for chunk in response.iter_content(
+                 ~~~~~~~~~~~~~~~~~~~~~^
+        chunk_size=1024 * 1024
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 939, in generate
+    raise ChunkedEncodingError(e)
+requests.exceptions.ChunkedEncodingError: ("Connection broken: ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)", ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+2026-09-22 13:26:00,238 - ERROR - Token refresh failed: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 238, in refresh_authentication
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+2026-09-22 13:26:03,964 - ERROR - Token refresh failed: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 238, in refresh_authentication
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+2026-09-22 13:26:05,890 - ERROR - Token refresh failed: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 238, in refresh_authentication
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+2026-09-22 13:26:08,040 - ERROR - Token refresh failed: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 238, in refresh_authentication
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+2026-09-22 13:26:13,262 - ERROR - Token refresh failed: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 238, in refresh_authentication
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+2026-09-22 13:26:15,311 - ERROR - Token refresh failed: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 238, in refresh_authentication
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+2026-09-22 13:26:17,461 - ERROR - Token refresh failed: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 238, in refresh_authentication
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+2026-09-22 13:26:19,510 - ERROR - Token refresh failed: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 238, in refresh_authentication
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+2026-09-22 13:26:21,251 - ERROR - Token refresh failed: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 238, in refresh_authentication
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+2026-09-22 13:26:23,810 - ERROR - Token refresh failed: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
+Traceback (most recent call last):
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\mdapi\mdapi.py", line 238, in refresh_authentication
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ruthvik\OneDrive\Desktop\thunderstorm-nowcasting\.venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: UNAUTHORIZED for url: https://mosdac.gov.in/download_api/refresh-token
