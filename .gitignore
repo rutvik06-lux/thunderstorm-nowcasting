@@ -1,5 +1,35 @@
-
-# Incomplete download files
-*.part
-
+# Python
 .venv/
+__pycache__/
+*.pyc
+
+# Environment / secrets
+.env
+.env.*
+mdapi/config.json
+mdapi/logs/
+
+# Node
+dashboard/node_modules/
+dashboard/dist/
+
+# Raw weather data
+data/raw/
+*.h5
+*.h5.part
+
+# Generated / processed weather data
+data/processed/
+
+# Model checkpoints
+models/*.pt
+models/*.pth
+models/*.ckpt
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
