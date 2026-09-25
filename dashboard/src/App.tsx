@@ -81,7 +81,7 @@ export default function App() {
   const [forecast, setForecast] = useState(30);
 
   useEffect(() => {
-    fetch("/api/insat/latest")
+   fetch(`${import.meta.env.VITE_API_URL}/api/insat/latest`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Backend request failed");
