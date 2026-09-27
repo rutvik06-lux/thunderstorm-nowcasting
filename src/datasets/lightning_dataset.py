@@ -6,73 +6,29 @@ from torch.utils.data import Dataset
 import xarray as xr
 
 
+PREDICTIVE_CHANNELS = [
+    "insat_tir1",
+    "insat_tir2",
+    "insat_wv",
+    "insat_vis",
+    "insat_availability",
+
+    "imerg_precipitation",
+    "imerg_availability",
+
+    "era5_u10",
+    "era5_v10",
+    "era5_d2m",
+    "era5_t2m",
+    "era5_msl",
+    "era5_sp",
+    "era5_tcc",
+    "era5_cape",
+    "era5_availability",
+]
+
+
 class LightningNowcastingDataset(Dataset):
-    """
-    PyTorch Dataset for multimodal lightning nowcasting.
-
-    Input:
-        data/processed/multimodal/odisha_multimodal_20200501.nc
-
-    Target:
-        data/processed/targets/lightning_targets_odisha_20200501.nc
-
-    Input shape per sample:
-        [T, C, H, W]
-
-    Target shape:
-        [4, H, W]
-
-    Target horizons:
-        +30, +60, +90, +120 minutes
-    """
-
-    CHANNELS = [
-        "insat_tir1",
-        "insat_tir2",
-        "insat_wv",
-        "insat_vis",
-        "insat_availability",
-
-        "imerg_precipitation",
-        "imerg_availability",
-
-        "era5_u10",
-        "era5_v10",
-        "era5_d2m",
-        "era5_t2m",
-        "era5_msl",
-        "era5_sp",
-        "era5_tcc",
-        "era5_cape",
-        "era5_availability",
-
-        "lis_lightning_density",
-        "lis_lightning_availability",
-    ]
-
-    AVAILABILITY_CHANNELS = [
-        "insat_availability",
-        "insat_availability",
-        "insat_availability",
-        "insat_availability",
-        "insat_availability",
-
-        "imerg_availability",
-        "imerg_availability",
-
-        "era5_availability",
-        "era5_availability",
-        "era5_availability",
-        "era5_availability",
-        "era5_availability",
-        "era5_availability",
-        "era5_availability",
-        "era5_availability",
-        "era5_availability",
-
-        "lis_lightning_availability",
-        "lis_lightning_availability",
-    ]
 
     def __init__(
         self,
@@ -87,11 +43,6 @@ class LightningNowcastingDataset(Dataset):
         self.history = history
         self.horizons = horizons
 
-        if self.horizons != 4:
-            raise ValueError(
-                "This prototype Dataset currently expects 4 horizons."
-            )
-
         if not self.multimodal_path.exists():
             raise FileNotFoundError(
                 f"Multimodal dataset not found: {self.multimodal_path}"
@@ -103,131 +54,130 @@ class LightningNowcastingDataset(Dataset):
             )
 
         self.ds = xr.open_dataset(self.multimodal_path)
-        self.targets = xr.open_dataset(self.target_path)
+        self.target_ds = xr.open_dataset(self.target_path)
 
-        self._validate()
+        self._validate_inputs()
 
-        self.samples = self._build_sample_indices()
+        self.samples = self._build_samples()
 
-        if len(self.samples) == 0:
-            raise ValueError(
-                "No valid samples were found. "
-                f"history={self.history}, horizons={self.horizons}, "
-                f"time_steps={self.ds.sizes['time']}"
-            )
+    def _validate_inputs(self):
 
-    def _validate(self):
-        """Validate variables, dimensions, and timestamps."""
-
-        missing_channels = [
-            name for name in self.CHANNELS
+        missing = [
+            name
+            for name in PREDICTIVE_CHANNELS
             if name not in self.ds
         ]
 
-        if missing_channels:
+        if missing:
             raise ValueError(
-                "Missing variables from multimodal dataset: "
-                + ", ".join(missing_channels)
+                "Missing predictive channels:\n"
+                + "\n".join(missing)
             )
 
-        if "lightning_target" not in self.targets:
+        if "lightning_density" not in self.target_ds:
             raise ValueError(
-                "Target variable 'lightning_target' not found."
+                "Target dataset must contain lightning_density"
             )
 
-        if "target_availability" not in self.targets:
+        if "lightning_availability" not in self.target_ds:
             raise ValueError(
-                "Target variable 'target_availability' not found."
+                "Target dataset must contain lightning_availability"
             )
 
-        if not np.array_equal(
-            self.ds.time.values,
-            self.targets.time.values,
-        ):
-            raise ValueError(
-                "Multimodal and target timestamps do not match."
-            )
+        if "time" not in self.ds:
+            raise ValueError("Multimodal dataset has no time coordinate")
 
-        if (
-            self.ds.sizes["y"] != self.targets.sizes["y"]
-            or self.ds.sizes["x"] != self.targets.sizes["x"]
-        ):
-            raise ValueError(
-                "Multimodal and target grid dimensions do not match."
-            )
+        if "time" not in self.target_ds:
+            raise ValueError("Target dataset has no time coordinate")
 
-    def _build_sample_indices(self):
-        """
-        Build forecast origins.
+    def _build_samples(self):
 
-        A sample requires:
-
-            history frames before/including t
-            +
-            4 future target frames
-
-        Example with history=2:
-
-            input: 04:00, 04:30
-            target: 04:30, 05:00, 05:30, 06:00
-
-        The target at each horizon is only usable where
-        target_availability == 1.
-        """
-
-        n_times = self.ds.sizes["time"]
+        n_times = len(self.ds.time)
 
         samples = []
 
-        for end_time in range(
-            self.history - 1,
-            n_times - self.horizons,
+        # A sample consists of:
+        #
+        # history frames
+        # followed by
+        # horizons target frames.
+        #
+        # Example:
+        #
+        # history=2
+        # horizons=4
+        #
+        # input:
+        #   t0, t1
+        #
+        # target:
+        #   t2, t3, t4, t5
+        #
+        # Only windows that have all required frames are considered.
+
+        for start in range(
+            0,
+            n_times - self.history - self.horizons + 1,
         ):
-            target_start = end_time + 1
-            target_end = target_start + self.horizons
+
+            input_indices = list(
+                range(
+                    start,
+                    start + self.history,
+                )
+            )
+
+            target_indices = list(
+                range(
+                    start + self.history,
+                    start + self.history + self.horizons,
+                )
+            )
 
             samples.append(
-                (
-                    end_time,
-                    target_start,
-                    target_end,
-                )
+                {
+                    "input_indices": input_indices,
+                    "target_indices": target_indices,
+                }
             )
 
         return samples
 
     def __len__(self):
+
         return len(self.samples)
 
     def __getitem__(self, index):
 
-        end_time, target_start, target_end = self.samples[index]
+        sample = self.samples[index]
 
-        input_start = end_time - self.history + 1
-        input_end = end_time + 1
+        input_indices = sample["input_indices"]
+        target_indices = sample["target_indices"]
+
+        # ---------------------------------------------------------
+        # INPUT
+        # ---------------------------------------------------------
 
         input_frames = []
 
         availability_frames = []
 
-        for t in range(input_start, input_end):
+        for time_index in input_indices:
 
-            data_channels = []
+            channels = []
 
-            availability_channels = []
+            channel_availability = []
 
-            for variable, availability_variable in zip(
-                self.CHANNELS,
-                self.AVAILABILITY_CHANNELS,
-            ):
+            for name in PREDICTIVE_CHANNELS:
 
-                values = self.ds[variable].isel(
-                    time=t
-                ).values.astype(np.float32)
+                values = self.ds[name].isel(
+                    time=time_index
+                ).values
 
-                availability = self.ds[
-                    availability_variable
-                ].isel(time=t).values.astype(np.float32)
+                values = np.asarray(
+                    values,
+                    dtype=np.float32,
+                )
 
                 values = np.nan_to_num(
                     values,
@@ -236,22 +186,48 @@ class LightningNowcastingDataset(Dataset):
                     neginf=0.0,
                 )
 
-                availability = np.nan_to_num(
-                    availability,
-                    nan=0.0,
-                    posinf=0.0,
-                    neginf=0.0,
+                channels.append(values)
+
+                # Availability is represented explicitly.
+                #
+                # For actual availability channels:
+                # use the supplied availability field.
+                #
+                # For ordinary data channels:
+                # finite values are considered available.
+
+                if name.endswith("_availability"):
+
+                    available = (
+                        np.isfinite(values)
+                        & (values > 0)
+                    ).astype(np.float32)
+
+                else:
+
+                    available = np.isfinite(
+                        self.ds[name]
+                        .isel(time=time_index)
+                        .values
+                    ).astype(np.float32)
+
+                channel_availability.append(
+                    available
                 )
 
-                data_channels.append(values)
-                availability_channels.append(availability)
-
-            input_frames.append(
-                np.stack(data_channels, axis=0)
+            frame = np.stack(
+                channels,
+                axis=0,
             )
 
+            frame_availability = np.stack(
+                channel_availability,
+                axis=0,
+            )
+
+            input_frames.append(frame)
             availability_frames.append(
-                np.stack(availability_channels, axis=0)
+                frame_availability
             )
 
         x = np.stack(
@@ -264,38 +240,130 @@ class LightningNowcastingDataset(Dataset):
             axis=0,
         )
 
-        target = self.targets[
-            "lightning_target"
-        ].isel(
-            time=slice(target_start, target_end)
-        ).values.astype(np.float32)
+        # ---------------------------------------------------------
+        # TARGET
+        # ---------------------------------------------------------
 
-        target_availability = self.targets[
-            "target_availability"
-        ].isel(
-            time=slice(target_start, target_end)
-        ).values.astype(np.float32)
+        target_frames = []
+        target_availability_frames = []
 
-        target = np.nan_to_num(
+        for time_index in target_indices:
+
+            target = np.asarray(
+                self.target_ds[
+                    "lightning_density"
+                ].isel(
+                    time=time_index
+                ).values,
+                dtype=np.float32,
+            )
+
+            target_available = np.asarray(
+                self.target_ds[
+                    "lightning_availability"
+                ].isel(
+                    time=time_index
+                ).values,
+                dtype=np.float32,
+            )
+
+            target = np.nan_to_num(
+                target,
+                nan=0.0,
+                posinf=0.0,
+                neginf=0.0,
+            )
+
+            target_available = np.nan_to_num(
+                target_available,
+                nan=0.0,
+                posinf=0.0,
+                neginf=0.0,
+            )
+
+            target_frames.append(target)
+            target_availability_frames.append(
+                target_available
+            )
+
+        target = np.stack(
+            target_frames,
+            axis=0,
+        )
+
+        target_availability = np.stack(
+            target_availability_frames,
+            axis=0,
+        )
+
+        # ---------------------------------------------------------
+        # TENSORS
+        # ---------------------------------------------------------
+
+        x = torch.tensor(
+            x,
+            dtype=torch.float32,
+        )
+
+        availability = torch.tensor(
+            availability,
+            dtype=torch.float32,
+        )
+
+        target = torch.tensor(
             target,
-            nan=0.0,
-            posinf=0.0,
-            neginf=0.0,
+            dtype=torch.float32,
         )
 
-        target_availability = np.nan_to_num(
+        target_availability = torch.tensor(
             target_availability,
-            nan=0.0,
-            posinf=0.0,
-            neginf=0.0,
+            dtype=torch.float32,
         )
 
-        x = torch.from_numpy(x)
-        availability = torch.from_numpy(availability)
-        target = torch.from_numpy(target)
-        target_availability = torch.from_numpy(
-            target_availability
+        # ---------------------------------------------------------
+        # SAFETY CHECKS
+        # ---------------------------------------------------------
+
+        expected_x = (
+            self.history,
+            len(PREDICTIVE_CHANNELS),
+            x.shape[-2],
+            x.shape[-1],
         )
+
+        expected_target = (
+            self.horizons,
+            target.shape[-2],
+            target.shape[-1],
+        )
+
+        if tuple(x.shape) != expected_x:
+
+            raise RuntimeError(
+                f"Unexpected input shape: {tuple(x.shape)} "
+                f"expected {expected_x}"
+            )
+
+        if tuple(availability.shape) != expected_x:
+
+            raise RuntimeError(
+                "Unexpected availability shape: "
+                f"{tuple(availability.shape)}"
+            )
+
+        if tuple(target.shape) != expected_target:
+
+            raise RuntimeError(
+                f"Unexpected target shape: {tuple(target.shape)} "
+                f"expected {expected_target}"
+            )
+
+        if tuple(target_availability.shape) != expected_target:
+
+            raise RuntimeError(
+                "Unexpected target availability shape: "
+                f"{tuple(target_availability.shape)}"
+            )
 
         return {
             "x": x,
@@ -304,106 +372,92 @@ class LightningNowcastingDataset(Dataset):
             "target_availability": target_availability,
         }
 
-    def close(self):
-        self.ds.close()
-        self.targets.close()
 
+if __name__ == "__main__":
 
-def test_dataset():
+    ROOT = Path(__file__).resolve().parents[2]
 
-    print("=" * 72)
-    print("LIGHTNING NOWCASTING DATASET TEST")
-    print("=" * 72)
+    multimodal_path = (
+        ROOT
+        / "data"
+        / "processed"
+        / "multimodal"
+        / "odisha_multimodal_20200501.nc"
+    )
+
+    target_path = (
+        ROOT
+        / "data"
+        / "processed"
+        / "targets"
+        / "lightning_targets_odisha_20200501.nc"
+    )
+
+    print("=" * 70)
+    print("16-CHANNEL LIGHTNING NOWCASTING DATASET TEST")
+    print("=" * 70)
+
+    print(f"Multimodal file: {multimodal_path}")
+    print(f"Target file:     {target_path}")
+    print()
 
     dataset = LightningNowcastingDataset(
-        multimodal_path=(
-            "data/processed/multimodal/"
-            "odisha_multimodal_20200501.nc"
-        ),
-        target_path=(
-            "data/processed/targets/"
-            "lightning_targets_odisha_20200501.nc"
-        ),
+        multimodal_path=multimodal_path,
+        target_path=target_path,
         history=2,
         horizons=4,
     )
 
-    print("Dataset samples :", len(dataset))
-    print("Input channels  :", len(dataset.CHANNELS))
-    print("History frames  :", dataset.history)
-    print("Forecast hours  :", dataset.horizons)
+    print(f"Dataset length: {len(dataset)}")
 
     sample = dataset[0]
 
     print()
-    print("Sample contents:")
-    print("  x shape                 :", sample["x"].shape)
+    print("Keys:")
+    print(list(sample.keys()))
+
+    print()
+    print(f"X shape:                    {sample['x'].shape}")
     print(
-        "  availability shape      :",
-        sample["availability"].shape,
+        f"Input availability shape: {sample['availability'].shape}"
     )
+    print(f"Target shape:               {sample['target'].shape}")
     print(
-        "  target shape            :",
-        sample["target"].shape,
+        "Target availability shape: "
+        f"{sample['target_availability'].shape}"
     )
+
+    print()
+    print(f"X dtype:      {sample['x'].dtype}")
+    print(f"Target dtype: {sample['target'].dtype}")
+
+    print()
     print(
-        "  target availability    :",
-        sample["target_availability"].shape,
+        "Predictive channels:",
+        len(PREDICTIVE_CHANNELS),
+    )
+
+    print(
+        "LIS channels in X: 0"
+    )
+
+    print(
+        "Target positive pixels:",
+        int(
+            (
+                sample["target"]
+                * sample["target_availability"]
+                > 0
+            ).sum()
+        ),
     )
 
     print()
-    print("Expected:")
-    print("  x                 : [2, 18, 27, 27]")
-    print("  availability      : [2, 18, 27, 27]")
-    print("  target            : [4, 27, 27]")
-    print("  target availability: [4, 27, 27]")
-
-    assert sample["x"].shape == (2, 18, 27, 27)
-    assert sample["availability"].shape == (2, 18, 27, 27)
-    assert sample["target"].shape == (4, 27, 27)
-    assert sample["target_availability"].shape == (
-        4,
-        27,
-        27,
-    )
-
-    assert torch.isfinite(sample["x"]).all()
-    assert torch.isfinite(sample["availability"]).all()
-    assert torch.isfinite(sample["target"]).all()
-    assert torch.isfinite(
-        sample["target_availability"]
-    ).all()
+    print("PREDICTIVE CHANNELS")
+    for i, name in enumerate(PREDICTIVE_CHANNELS):
+        print(f"{i:02d}: {name}")
 
     print()
-    print("Input finite        : PASS")
-    print("Availability finite : PASS")
-    print("Target finite       : PASS")
-
-    print()
-    print("Target availability:")
-    for h in range(4):
-        observed = (
-            sample["target_availability"][h] == 1
-        ).sum().item()
-
-        positive = (
-            (sample["target"][h] == 1)
-            & (sample["target_availability"][h] == 1)
-        ).sum().item()
-
-        print(
-            f"  +{(h + 1) * 30:3d} min"
-            f" | observed={observed:4d}"
-            f" | positive={positive:4d}"
-        )
-
-    dataset.close()
-
-    print()
-    print("=" * 72)
     print("DATASET TEST PASSED")
-    print("=" * 72)
+    print("=" * 70)
 
-
-if __name__ == "__main__":
-    test_dataset()

@@ -1,119 +1,71 @@
-﻿import torch
+﻿from pathlib import Path
+import torch
 import torch.nn as nn
 
 
 class ReliabilityAwareFusion(nn.Module):
     """
-    Fuses multimodal atmospheric observations with
-    per-channel availability information.
+    Fuses 16 predictive meteorological/satellite channels
+    with their 16 availability channels.
 
-    Input:
-        x            [B, C, H, W]
-        availability [B, C, H, W]
-
-    Output:
-        [B, 64, H, W]
+    LIS is deliberately excluded from the predictive path.
     """
 
-    def __init__(self, feature_channels=18):
+    def __init__(self, input_channels=16, hidden_channels=64):
         super().__init__()
 
-        self.encoder = nn.Sequential(
-            nn.Conv2d(
-                feature_channels * 2,
-                32,
-                kernel_size=3,
-                padding=1,
-            ),
+        self.fusion = nn.Sequential(
+            nn.Conv2d(input_channels * 2, 32, kernel_size=3, padding=1),
             nn.BatchNorm2d(32),
             nn.ReLU(inplace=True),
 
-            nn.Conv2d(
-                32,
-                64,
-                kernel_size=3,
-                padding=1,
-            ),
-            nn.BatchNorm2d(64),
+            nn.Conv2d(32, hidden_channels, kernel_size=3, padding=1),
+            nn.BatchNorm2d(hidden_channels),
             nn.ReLU(inplace=True),
         )
 
     def forward(self, x, availability):
-
-        x = torch.nan_to_num(
-            x,
-            nan=0.0,
-            posinf=0.0,
-            neginf=0.0,
-        )
-
-        availability = torch.nan_to_num(
-            availability,
-            nan=0.0,
-            posinf=0.0,
-            neginf=0.0,
-        )
-
-        fused_input = torch.cat(
-            [x, availability],
-            dim=1,
-        )
-
-        return self.encoder(fused_input)
+        # x:              [B, 16, H, W]
+        # availability:  [B, 16, H, W]
+        fused_input = torch.cat([x, availability], dim=1)
+        return self.fusion(fused_input)
 
 
 class ConvLSTMCell(nn.Module):
 
-    def __init__(
-        self,
-        input_channels,
-        hidden_channels,
-    ):
+    def __init__(self, input_channels, hidden_channels):
         super().__init__()
 
         self.hidden_channels = hidden_channels
 
-        self.gates = nn.Conv2d(
+        self.conv = nn.Conv2d(
             input_channels + hidden_channels,
-            hidden_channels * 4,
+            4 * hidden_channels,
             kernel_size=3,
             padding=1,
         )
 
     def forward(self, x, hidden_state):
 
-        h_prev, c_prev = hidden_state
+        h, c = hidden_state
 
-        combined = torch.cat(
-            [x, h_prev],
-            dim=1,
-        )
+        combined = torch.cat([x, h], dim=1)
 
-        gates = self.gates(combined)
+        gates = self.conv(combined)
 
-        i, f, o, g = torch.chunk(
-            gates,
-            4,
-            dim=1,
-        )
+        i, f, o, g = torch.chunk(gates, 4, dim=1)
 
         i = torch.sigmoid(i)
         f = torch.sigmoid(f)
         o = torch.sigmoid(o)
         g = torch.tanh(g)
 
-        c = f * c_prev + i * g
-        h = o * torch.tanh(c)
+        c_next = f * c + i * g
+        h_next = o * torch.tanh(c_next)
 
-        return h, c
+        return h_next, c_next
 
-    def init_hidden(
-        self,
-        batch_size,
-        height,
-        width,
-        device,
-    ):
+    def init_hidden(self, batch_size, height, width, device):
 
         h = torch.zeros(
             batch_size,
@@ -138,30 +90,23 @@ class ThunderstormNowcaster(nn.Module):
     """
     Multimodal thunderstorm/lightning nowcasting model.
 
-    Input:
-        x:
-            [B, T, 18, H, W]
+    Predictive input:
+        16 channels
 
-        availability:
-            [B, T, 18, H, W]
+    Excluded from prediction:
+        LIS lightning observation
+
+    Input:
+        x             [B, T, 16, H, W]
+        availability [B, T, 16, H, W]
 
     Output:
-        logits:
-            [B, 4, H, W]
-
-    Four forecast horizons:
-        +30 min
-        +60 min
-        +90 min
-        +120 min
-
-    Apply sigmoid to logits during inference to obtain
-    lightning probabilities.
+        logits        [B, horizons, H, W]
     """
 
     def __init__(
         self,
-        input_channels=18,
+        input_channels=16,
         hidden_channels=64,
         horizons=4,
     ):
@@ -172,11 +117,12 @@ class ThunderstormNowcaster(nn.Module):
         self.horizons = horizons
 
         self.fusion = ReliabilityAwareFusion(
-            feature_channels=input_channels
+            input_channels=input_channels,
+            hidden_channels=hidden_channels,
         )
 
-        self.convlstm = ConvLSTMCell(
-            input_channels=64,
+        self.temporal = ConvLSTMCell(
+            input_channels=hidden_channels,
             hidden_channels=hidden_channels,
         )
 
@@ -200,31 +146,30 @@ class ThunderstormNowcaster(nn.Module):
 
         if x.ndim != 5:
             raise ValueError(
-                "Expected x with shape "
-                "[B, T, C, H, W]"
+                f"Expected x with shape [B,T,C,H,W], got {tuple(x.shape)}"
             )
 
         if availability.shape != x.shape:
             raise ValueError(
-                "Availability must have the same shape "
-                "as x."
+                "Availability tensor must have the same shape as x. "
+                f"x={tuple(x.shape)}, availability={tuple(availability.shape)}"
             )
 
-        batch_size, time_steps, channels, height, width = (
-            x.shape
-        )
+        batch_size, time_steps, channels, height, width = x.shape
 
         if channels != self.input_channels:
             raise ValueError(
-                f"Expected {self.input_channels} input "
-                f"channels, received {channels}."
+                f"Expected {self.input_channels} predictive channels, "
+                f"got {channels}"
             )
 
-        h, c = self.convlstm.init_hidden(
+        device = x.device
+
+        h, c = self.temporal.init_hidden(
             batch_size,
             height,
             width,
-            x.device,
+            device,
         )
 
         for t in range(time_steps):
@@ -234,7 +179,7 @@ class ThunderstormNowcaster(nn.Module):
                 availability[:, t],
             )
 
-            h, c = self.convlstm(
+            h, c = self.temporal(
                 fused,
                 (h, c),
             )
@@ -243,107 +188,72 @@ class ThunderstormNowcaster(nn.Module):
 
         return logits
 
+    @torch.no_grad()
+    def predict_probability(self, x, availability):
 
-def test_model():
+        logits = self.forward(x, availability)
 
-    print("=" * 72)
-    print("MULTIMODAL THUNDERSTORM NOWCASTING MODEL TEST")
-    print("=" * 72)
+        return torch.sigmoid(logits)
 
-    device = torch.device(
-        "cuda"
-        if torch.cuda.is_available()
-        else "cpu"
+
+def count_parameters(model):
+
+    return sum(
+        parameter.numel()
+        for parameter in model.parameters()
+        if parameter.requires_grad
     )
 
-    print("Device:", device)
 
-    batch_size = 1
-    time_steps = 2
-    channels = 18
-    height = 27
-    width = 27
-    horizons = 4
+if __name__ == "__main__":
+
+    model = ThunderstormNowcaster(
+        input_channels=16,
+        hidden_channels=64,
+        horizons=4,
+    )
+
+    print("=" * 70)
+    print("THUNDERSTORM NOWCASTER MODEL TEST")
+    print("=" * 70)
+
+    print(f"Trainable parameters: {count_parameters(model):,}")
 
     x = torch.randn(
-        batch_size,
-        time_steps,
-        channels,
-        height,
-        width,
-        device=device,
+        1,
+        2,
+        16,
+        27,
+        27,
     )
 
     availability = torch.ones_like(x)
 
-    # Simulate unavailable IMERG and LIS observations.
-    x[:, :, 5, :, :] = float("nan")
-    x[:, :, 16, :, :] = float("nan")
-
-    availability[:, :, 5, :, :] = 0.0
-    availability[:, :, 16, :, :] = 0.0
-
-    print("Input shape       :", x.shape)
-    print("Availability shape:", availability.shape)
-    print("Missing channels  :", "IMERG + LIS")
-
-    model = ThunderstormNowcaster(
-        input_channels=channels,
-        hidden_channels=64,
-        horizons=horizons,
-    ).to(device)
-
-    model.eval()
-
-    with torch.no_grad():
-
-        logits = model(
-            x,
-            availability,
-        )
-
-        probabilities = torch.sigmoid(
-            logits
-        )
-
-    print("Logits shape      :", logits.shape)
-    print("Probability shape :", probabilities.shape)
-    print(
-        "Probability range :",
-        f"{probabilities.min().item():.4f}"
-        f" -> "
-        f"{probabilities.max().item():.4f}",
+    logits = model(
+        x,
+        availability,
     )
 
-    expected_shape = (
-        batch_size,
-        horizons,
-        height,
-        width,
-    )
+    probabilities = torch.sigmoid(logits)
 
-    assert logits.shape == expected_shape
-    assert probabilities.shape == expected_shape
+    print(f"Input shape:         {tuple(x.shape)}")
+    print(f"Availability shape:  {tuple(availability.shape)}")
+    print(f"Output logits shape: {tuple(logits.shape)}")
+    print(f"Output probability:  {tuple(probabilities.shape)}")
+
+    assert x.shape == (1, 2, 16, 27, 27)
+    assert logits.shape == (1, 4, 27, 27)
 
     assert torch.isfinite(logits).all()
     assert torch.isfinite(probabilities).all()
 
-    assert (
-        probabilities.min().item() >= 0.0
-    )
-
-    assert (
-        probabilities.max().item() <= 1.0
-    )
+    assert probabilities.min() >= 0
+    assert probabilities.max() <= 1
 
     print()
-    print("Output shape       : PASS")
-    print("Logits finite      : PASS")
-    print("Probabilities valid: PASS")
+    print("LIS predictive channels: EXCLUDED")
+    print("Predictive channels:     16")
+    print("Forecast horizons:       4")
     print()
     print("MODEL TEST PASSED")
-    print("=" * 72)
-
-
-if __name__ == "__main__":
-    test_model()
+    print("=" * 70)
