@@ -189,7 +189,7 @@ def authenticate():
             )
 
             logger.error(
-                f"Authentication response: {result}"
+                "Authentication response did not contain a bearer token."
             )
 
             return False
@@ -502,18 +502,10 @@ def download_data(
         True
     )
 
-    # ========================================================
-    # RETRY / RESUME LOOP
-    # ========================================================
-
     for attempt in range(
         1,
         max_retries + 1
     ):
-
-        # ----------------------------------------------------
-        # CHECK EXISTING PARTIAL FILE
-        # ----------------------------------------------------
 
         if tmp_file_path.exists():
 
@@ -552,18 +544,10 @@ def download_data(
                 "[INFO] Starting download from 0 bytes."
             )
 
-        # ----------------------------------------------------
-        # REQUEST HEADERS
-        # ----------------------------------------------------
-
         headers = {
             "Authorization":
                 f"Bearer {bearer_token}"
         }
-
-        # ----------------------------------------------------
-        # RANGE REQUEST
-        # ----------------------------------------------------
 
         if existing_size > 0:
 
@@ -585,10 +569,6 @@ def download_data(
                 timeout=(30, 60)
             )
 
-            # =================================================
-            # TOKEN EXPIRED
-            # =================================================
-
             if response.status_code == 401:
 
                 print(
@@ -609,10 +589,6 @@ def download_data(
 
                 return None
 
-            # =================================================
-            # RANGE NOT SUPPORTED
-            # =================================================
-
             if existing_size > 0 and response.status_code == 200:
 
                 print(
@@ -621,32 +597,19 @@ def download_data(
                 )
 
                 print(
-                    "[INFO] Server returned HTTP 200 instead "
-                    "of HTTP 206."
-                )
-
-                print(
-                    "[INFO] Restarting this file from zero "
-                    "to avoid corrupting it."
+                    "[INFO] Restarting this file from zero."
                 )
 
                 response.close()
 
                 try:
-
                     tmp_file_path.unlink()
-
                 except FileNotFoundError:
-
                     pass
 
                 time.sleep(3)
 
                 continue
-
-            # =================================================
-            # RANGE SUCCESS
-            # =================================================
 
             if existing_size > 0:
 
@@ -664,15 +627,7 @@ def download_data(
                         f"{response.status_code} for resume."
                     )
 
-            # =================================================
-            # NORMAL DOWNLOAD
-            # =================================================
-
             response.raise_for_status()
-
-            # ------------------------------------------------
-            # CONTENT LENGTH
-            # ------------------------------------------------
 
             response_length = safe_int(
                 response.headers.get(
@@ -682,19 +637,12 @@ def download_data(
                 0
             )
 
-            # ------------------------------------------------
-            # DETERMINE TOTAL FILE SIZE
-            # ------------------------------------------------
-
             content_range = response.headers.get(
                 "Content-Range",
                 ""
             )
 
             total_size = 0
-
-            # Example:
-            # bytes 140452571-425255359/425255360
 
             if content_range:
 
@@ -722,10 +670,6 @@ def download_data(
 
                     total_size = response_length
 
-            # ------------------------------------------------
-            # SHOW EXPECTED SIZE
-            # ------------------------------------------------
-
             if total_size > 0:
 
                 print(
@@ -733,10 +677,6 @@ def download_data(
                     f"{format_bytes(total_size)} "
                     f"({total_size:,} bytes)"
                 )
-
-            # ------------------------------------------------
-            # OPEN FILE IN CORRECT MODE
-            # ------------------------------------------------
 
             if existing_size > 0 and response.status_code == 206:
 
@@ -751,10 +691,6 @@ def download_data(
                 downloaded_size = 0
 
                 existing_size = 0
-
-            # ------------------------------------------------
-            # DOWNLOAD
-            # ------------------------------------------------
 
             start_time = time.time()
 
@@ -809,10 +745,6 @@ def download_data(
 
                 response.close()
 
-            # ------------------------------------------------
-            # ACTUAL FILE SIZE
-            # ------------------------------------------------
-
             actual_size = (
                 tmp_file_path.stat().st_size
                 if tmp_file_path.exists()
@@ -842,10 +774,6 @@ def download_data(
                     f"[INFO] Approx. transfer speed: "
                     f"{speed:.2f} MB/s"
                 )
-
-            # =================================================
-            # VERIFY COMPLETE DOWNLOAD
-            # =================================================
 
             if total_size > 0:
 
@@ -893,12 +821,12 @@ def download_data(
                     if attempt < max_retries:
 
                         print(
-                            f"[INFO] Keeping .part file "
-                            f"for resume."
+                            "[INFO] Keeping .part file "
+                            "for resume."
                         )
 
                         print(
-                            f"[INFO] Retrying in 5 seconds..."
+                            "[INFO] Retrying in 5 seconds..."
                         )
 
                         time.sleep(5)
@@ -910,10 +838,6 @@ def download_data(
                     )
 
                     return None
-
-            # =================================================
-            # FINALIZE
-            # =================================================
 
             if not tmp_file_path.exists():
 
@@ -947,17 +871,13 @@ def download_data(
 
             return str(file_path)
 
-        # ====================================================
-        # CONNECTION / TIMEOUT
-        # ====================================================
-
         except (
             requests.exceptions.Timeout,
             requests.exceptions.ConnectionError
         ) as e:
 
             print(
-                f"\n[ERROR] Connection interrupted:"
+                "\n[ERROR] Connection interrupted:"
             )
 
             print(
@@ -969,11 +889,6 @@ def download_data(
                 f"{filename}: {e}"
             )
 
-            # -----------------------------------------------
-            # IMPORTANT:
-            # DO NOT DELETE .part
-            # -----------------------------------------------
-
             if tmp_file_path.exists():
 
                 partial_size = (
@@ -983,11 +898,6 @@ def download_data(
                 print(
                     f"[INFO] Partial file preserved: "
                     f"{format_bytes(partial_size)}"
-                )
-
-                print(
-                    "[INFO] Next attempt will resume "
-                    "from this byte."
                 )
 
             if attempt < max_retries:
@@ -1002,10 +912,6 @@ def download_data(
 
             return None
 
-        # ====================================================
-        # HTTP ERROR
-        # ====================================================
-
         except requests.exceptions.HTTPError as e:
 
             print(
@@ -1015,12 +921,6 @@ def download_data(
             logger.exception(
                 f"HTTP error downloading {filename}"
             )
-
-            # -----------------------------------------------
-            # If this was a bad Range request, keep the
-            # partial file only if another attempt can
-            # retry it.
-            # -----------------------------------------------
 
             if response is not None:
 
@@ -1041,14 +941,10 @@ def download_data(
 
             return None
 
-        # ====================================================
-        # OTHER REQUEST ERROR
-        # ====================================================
-
         except requests.exceptions.RequestException as e:
 
             print(
-                f"\n[ERROR] Request error:"
+                "\n[ERROR] Request error:"
             )
 
             print(
@@ -1081,10 +977,6 @@ def download_data(
                 continue
 
             return None
-
-        # ====================================================
-        # GENERAL ERROR
-        # ====================================================
 
         except Exception as e:
 
@@ -1361,6 +1253,27 @@ def fetch_and_download_data():
 
             page_result = response.json()
 
+            print("\n========== MOSDAC RECORDS ==========")
+
+            if isinstance(page_result, dict):
+                for key, value in page_result.items():
+                    if isinstance(value, list):
+                        print(f"\nKEY: {key} | COUNT: {len(value)}")
+
+                        for item in value:
+                            if isinstance(item, dict):
+                                identifier = (
+                                    item.get("identifier")
+                                    or item.get("gId")
+                                    or item.get("gid")
+                                    or item.get("name")
+                                )
+
+                                if identifier:
+                                    print(identifier)
+
+            print("====================================\n")
+
         except Exception as e:
 
             print(
@@ -1373,6 +1286,45 @@ def fetch_and_download_data():
 
             return
 
+        # ====================================================
+        # DEBUG MOSDAC RESPONSE
+        # ====================================================
+
+        print("\n[DEBUG] Page response keys:")
+
+        if isinstance(page_result, dict):
+
+            print(
+                list(page_result.keys())
+            )
+
+            for key, value in page_result.items():
+
+                if isinstance(value, list):
+
+                    print(
+                        f"[DEBUG] LIST KEY: "
+                        f"{key} -> {len(value)} items"
+                    )
+
+                    if len(value) > 0:
+
+                        print(
+                            "[DEBUG] FIRST RECORD:"
+                        )
+
+                        print(
+                            json.dumps(
+                                value[0],
+                                indent=2,
+                                default=str
+                            )
+                        )
+
+        # ====================================================
+        # GET RECORD LIST
+        # ====================================================
+
         page_entries = page_result.get(
             "entries",
             page_result.get(
@@ -1380,6 +1332,69 @@ def fetch_and_download_data():
                 []
             )
         )
+
+                # ====================================================
+        # FILTER INSAT EVENT-TIME RECORDS
+        # ====================================================
+
+        target_times = {
+            "0400",
+            "0430",
+            "0500",
+            "0530",
+            "0600",
+            "0630"
+        }
+
+        filtered_entries = []
+
+        for item in page_entries:
+
+            identifier = (
+                item.get("identifier")
+                or item.get("fileName")
+                or item.get("filename")
+                or item.get("name")
+                or ""
+            )
+
+            identifier = str(identifier)
+
+            # Extract HHMM from:
+            # 3DIMG_01MAY2020_0500_L1C_ASIA_MER_V01R00.h5
+            match = re.search(
+                r"_([0-9]{4})_L1C_ASIA_MER",
+                identifier
+            )
+
+            if match:
+
+                hhmm = match.group(1)
+
+                if hhmm in target_times:
+
+                    filtered_entries.append(item)
+
+        print(
+            f"[INFO] Event-time INSAT records found: "
+            f"{len(filtered_entries)}"
+        )
+
+        for item in filtered_entries:
+
+            identifier = (
+                item.get("identifier")
+                or item.get("fileName")
+                or item.get("filename")
+                or item.get("name")
+                or ""
+            )
+
+            print(
+                f"[EVENT] {identifier}"
+            )
+
+        page_entries = filtered_entries
 
         if not page_entries:
 
@@ -1419,6 +1434,22 @@ def fetch_and_download_data():
                 item.get("updated")
                 or item.get("date")
                 or ""
+            )
+
+            print(
+                f"\n[DEBUG] Record {processed_records}"
+            )
+
+            print(
+                f"        identifier = {identifier}"
+            )
+
+            print(
+                f"        record_id  = {record_id}"
+            )
+
+            print(
+                f"        updated    = {updated}"
             )
 
             if not record_id:
@@ -1579,10 +1610,6 @@ def main():
 
     setup_logging()
 
-    # --------------------------------------------------------
-    # Authentication
-    # --------------------------------------------------------
-
     if not authenticate():
 
         print(
@@ -1593,15 +1620,7 @@ def main():
 
     try:
 
-        # ----------------------------------------------------
-        # Search
-        # ----------------------------------------------------
-
         search_results()
-
-        # ----------------------------------------------------
-        # Download
-        # ----------------------------------------------------
 
         print(
             "\n[INFO] Starting resumable download..."
