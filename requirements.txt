@@ -1,4 +1,19 @@
-fastapi==0.141.1
-uvicorn==0.53.0
-numpy==2.5.3
-h5py==3.16.0
+# Core API
+fastapi>=0.115.0
+uvicorn>=0.32.0
+requests>=2.31.0
+
+# Numerical and scientific stack
+numpy>=1.26.0
+pandas>=2.2.0
+xarray>=2024.10.0
+scipy>=1.13.0
+matplotlib>=3.8.0
+h5py>=3.10.0
+netCDF4>=1.6.5
+
+# Deep learning
+torch>=2.4.0
+
+# Optional: if you want to install everything for local dev/test runs
+# pytest>=8.0.0
