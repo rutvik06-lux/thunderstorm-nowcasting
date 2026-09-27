@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -315,7 +315,7 @@ export default function App() {
   useEffect(() => {
     let alive = true;
 
-    fetch("/api/multimodal/latest")
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/multimodal/latest`)
       .then((r) => {
         if (!r.ok) throw new Error(`API returned ${r.status}`);
         return r.json();
@@ -1477,4 +1477,5 @@ export default function App() {
     </div>
   );
 }
+
 
